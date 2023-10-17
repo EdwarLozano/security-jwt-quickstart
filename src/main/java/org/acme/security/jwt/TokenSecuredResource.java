@@ -12,6 +12,8 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.SecurityContext;
 
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 @Path("/secured")
@@ -20,6 +22,9 @@ public class TokenSecuredResource {
 
     @Inject
     JsonWebToken jwt;
+    @Inject
+    @Claim(standard = Claims.birthdate)
+    String birthdate;
 
     @GET
     @Path("permit-all")
@@ -35,6 +40,14 @@ public class TokenSecuredResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String helloRolesAllowed(@Context SecurityContext ctx) {
         return getResponseString(ctx) + ", birthdate: " + jwt.getClaim("birthdate").toString();
+    }
+
+    @GET
+    @Path("roles-allowed-admin")
+    @RolesAllowed("Admin")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String helloRolesAllowedAdmin(@Context SecurityContext ctx) {
+        return getResponseString(ctx) + ", birthdate: " + birthdate;
     }
 
     private String getResponseString(SecurityContext ctx) {
