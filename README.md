@@ -51,3 +51,16 @@ If you want to learn more about building native executables, please consult http
 
 - SmallRye JWT Build ([guide](https://quarkus.io/guides/security-jwt-build)): Create JSON Web Token with SmallRye JWT Build API
 - SmallRye JWT ([guide](https://quarkus.io/guides/security-jwt)): Secure your applications with JSON Web Token
+
+
+# Capturas de guía
+**Server**
+![img.png](img.png)
+
+**Client**
+![img_1.png](img_1.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+
+
